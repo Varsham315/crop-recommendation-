@@ -1,0 +1,27 @@
+[
+  {
+    "state_name": "Uttar Pradesh",
+    "wheat_area": 9797.59,
+    "wheat_prod": 35798.6
+  },
+  {
+    "state_name": "Madhya Pradesh",
+    "wheat_area": 5802.9800000000005,
+    "wheat_prod": 20019.95
+  },
+  {
+    "state_name": "Punjab",
+    "wheat_area": 3512.0,
+    "wheat_prod": 17830.0
+  },
+  {
+    "state_name": "Haryana",
+    "wheat_area": 2530.5,
+    "wheat_prod": 12263.0
+  },
+  {
+    "state_name": "Rajasthan",
+    "wheat_area": 3050.25,
+    "wheat_prod": 11280.48
+  }
+]

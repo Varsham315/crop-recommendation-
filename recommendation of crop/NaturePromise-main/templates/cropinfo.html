@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <!-- Font-Awesome -->
+    <script src="https://kit.fontawesome.com/97132b68f0.js" crossorigin="anonymous"></script>
+  <title>CropCraft</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f9;
+    }
+    .navbar-nav .nav-item {
+            margin-right: 15px;
+        }
+
+        .nav-link {
+            font-size: 1.2rem;
+        }
+        .google {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+    body {
+    background-image: url('/static/images/info.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh; /* Ensures full viewport height */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+
+    .crop-card {
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 15px;
+      width: 200px;
+      text-align: center;
+      background-color: #fff;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .crop-card img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .crop-card h3 {
+      margin: 10px 0;
+      font-size: 18px;
+    }
+
+    .crop-card button {
+      background-color: #28a745;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .crop-card button:hover {
+      background-color: #218838;
+    }
+
+    .info {
+      margin-top: 10px;
+      display: none;
+      text-align: left;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .info p {
+      margin: 5px 0;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="/">
+        AgriCrop
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/predict">Predict</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/dashboard">Dashboard</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/cropinfo">CropInfo</a>
+            </li>
+        </ul>
+    </div>
+    <div class="google">
+        <div id="google_translate_element"></div>
+    </div>
+</nav>
+  <h1 style="text-align: center;">Crop Information</h1>
+  <div class="container">
+    <!-- Crop Cards -->
+    <div class="crop-card">
+        <img src="{{ url_for('static', filename='images/crop/rice.jpg') }}" alt="Rice">
+      <h3>Rice</h3>
+      <button onclick="toggleInfo('rice')">Know More</button>
+      <div id="rice" class="info">
+        <p><strong>Diseases:</strong> Blast, Bacterial blight</p>
+        <p><strong>Benefits:</strong> High carbohydrate source, staple food.</p>
+        <p><strong>Fertilizer Prevention:</strong> Use nitrogen-based fertilizers.</p>
+      </div>
+    </div>
+
+    <div class="crop-card">
+      <img src="{{ url_for('static', filename='images/crop/maize.jpg') }}" alt="maize">
+      <h3>Maize</h3>
+      <button onclick="toggleInfo('maize')">Know More</button>
+      <div id="maize" class="info">
+        <p><strong>Diseases:</strong> Corn smut, Rust</p>
+        <p><strong>Benefits:</strong> Rich in fiber, used in animal feed.</p>
+        <p><strong>Fertilizer Prevention:</strong> Apply potassium-rich fertilizers.</p>
+      </div>
+    </div>
+
+    <div class="crop-card">
+      <img src="{{ url_for('static', filename='images/crop/chickpea.jpg') }}" alt="chickpea">
+      <h3>Chickpea</h3>
+      <button onclick="toggleInfo('chickpea')">Know More</button>
+      <div id="chickpea" class="info">
+        <p><strong>Diseases:</strong> Fusarium wilt, Ascochyta blight</p>
+        <p><strong>Benefits:</strong> High protein content, good for heart health.</p>
+        <p><strong>Fertilizer Prevention:</strong> Use phosphorus-based fertilizers.</p>
+      </div>
+    </div>
+
+    <!-- Add similar cards for other crops -->
+    
+            <!-- Kidneybeans -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/kidneybeans.jpg') }}" alt="kidneybeans">
+                <h3>Kidneybeans</h3>
+                <button onclick="toggleInfo('kidneybeans')">Know More</button>
+                <div id="kidneybeans" class="info">
+                    <p><strong>Diseases:</strong> Anthracnose, Root rot.</p>
+                    <p><strong>Benefits:</strong> Rich in fiber and protein.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use balanced NPK fertilizers.</p>
+                </div>
+            </div>
+    
+            <!-- Pigeonpeas -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/pigeonpeas.jpg') }}" alt="pigeonpeas">
+                <h3>Pigeonpeas</h3>
+                <button onclick="toggleInfo('pigeonpeas')">Know More</button>
+                <div id="pigeonpeas" class="info">
+                    <p><strong>Diseases:</strong> Wilt, Sterility mosaic disease.</p>
+                    <p><strong>Benefits:</strong> High in protein, improves soil fertility.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use phosphorus and potassium fertilizers.</p>
+                </div>
+            </div>
+    
+            <!-- Mothbeans -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/mothbeans.jpg') }}" alt="mothbeans">
+                <h3>Mothbeans</h3>
+                <button onclick="toggleInfo('mothbeans')">Know More</button>
+                <div id="mothbeans" class="info">
+                    <p><strong>Diseases:</strong> Yellow mosaic virus, Powdery mildew.</p>
+                    <p><strong>Benefits:</strong> Rich in protein and fiber.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use organic compost and balanced fertilizers.</p>
+                </div>
+            </div>
+    
+            <!-- Mungbean -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/mungbean.jpg') }}" alt="mungbean">
+                <h3>Mungbean</h3>
+                <button onclick="toggleInfo('mungbean')">Know More</button>
+                <div id="mungbean" class="info">
+                    <p><strong>Diseases:</strong> Cercospora leaf spot, Powdery mildew.</p>
+                    <p><strong>Benefits:</strong> High in protein and antioxidants.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use phosphorus and potassium fertilizers.</p>
+                </div>
+            </div>
+    
+            <!-- Blackgram -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/blackgram.jpg') }}" alt="blackgram">
+                <h3>Blackgram</h3>
+                <button onclick="toggleInfo('blackgram')">Know More</button>
+                <div id="blackgram" class="info">
+                    <p><strong>Diseases:</strong> Leaf spot, Yellow mosaic virus.</p>
+                    <p><strong>Benefits:</strong> Rich in protein and iron.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use organic manure and balanced fertilizers.</p>
+                </div>
+            </div>
+    
+            <!-- Lentil -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/lentil.jpg') }}" alt="lentil">
+                <h3>Lentil</h3>
+                <button onclick="toggleInfo('lentil')">Know More</button>
+                <div id="lentil" class="info">
+                    <p><strong>Diseases:</strong> Ascochyta blight, Fusarium wilt.</p>
+                    <p><strong>Benefits:</strong> High in protein and fiber.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use phosphorus-rich fertilizers.</p>
+                </div>
+            </div>
+    
+            <!-- Pomegranate -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/pomegranate.jpg') }}" alt="pomegranate">
+                <h3>Pomegranate</h3>
+                <button onclick="toggleInfo('pomegranate')">Know More</button>
+                <div id="pomegranate" class="info">
+                    <p><strong>Diseases:</strong> Bacterial blight, Fruit rot.</p>
+                    <p><strong>Benefits:</strong> Rich in antioxidants, improves heart health.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use organic compost and micronutrients.</p>
+                </div>
+            </div>
+    
+            <!-- Banana -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/banana.jpg') }}" alt="banana">
+                <h3>Banana</h3>
+                <button onclick="toggleInfo('banana')">Know More</button>
+                <div id="banana" class="info">
+                    <p><strong>Diseases:</strong> Panama disease, Sigatoka leaf spot.</p>
+                    <p><strong>Benefits:</strong> Rich in potassium, boosts energy.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use potassium-rich fertilizers.</p>
+                </div>
+            </div>
+    
+            <!-- Mango -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/mango.jpg') }}" alt="mango">
+                <h3>Mango</h3>
+                <button onclick="toggleInfo('mango')">Know More</button>
+                <div id="mango" class="info">
+                    <p><strong>Diseases:</strong> Anthracnose, Powdery mildew.</p>
+                    <p><strong>Benefits:</strong> Rich in vitamins A and C.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use balanced NPK fertilizers.</p>
+                </div>
+            </div>
+    
+            <!-- Grapes -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/grapes.jpg') }}" alt="grapes">
+                <h3>Grapes</h3>
+                <button onclick="toggleInfo('grapes')">Know More</button>
+                <div id="grapes" class="info">
+                    <p><strong>Diseases:</strong> Downy mildew, Powdery mildew.</p>
+                    <p><strong>Benefits:</strong> Rich in antioxidants, improves heart health.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use organic compost and micronutrients.</p>
+                </div>
+            </div>
+    
+            <!-- Watermelon -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/watermelon.jpg') }}" alt="watermelon">
+                <h3>Watermelon</h3>
+                <button onclick="toggleInfo('watermelon')">Know More</button>
+                <div id="watermelon" class="info">
+                    <p><strong>Diseases:</strong> Fusarium wilt, Anthracnose.</p>
+                    <p><strong>Benefits:</strong> Hydrating, rich in vitamins A and C.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use nitrogen and potassium fertilizers.</p>
+                </div>
+            </div>
+    
+            <!-- Muskmelon -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/muskmelon.jpg') }}" alt="Muskmelon">
+                <h3>Muskmelon</h3>
+                <button onclick="toggleInfo('muskmelon')">Know More</button>
+                <div id="muskmelon" class="info">
+                    <p><strong>Diseases:</strong> Powdery mildew, Downy mildew.</p>
+                    <p><strong>Benefits:</strong> Rich in vitamins and hydration.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use balanced NPK fertilizers.</p>
+                </div>
+            </div>
+    
+            <!-- Apple -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/apple.jpg') }}" alt="Apple">
+                <h3>Apple</h3>
+                <button onclick="toggleInfo('apple')">Know More</button>
+                <div id="apple" class="info">
+                    <p><strong>Diseases:</strong> Apple scab, Fire blight.</p>
+                    <p><strong>Benefits:</strong> Rich in fiber and antioxidants.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use organic compost and micronutrients.</p>
+                </div>
+            </div>
+    
+            <!-- Orange -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/orange.jpg') }}" alt="Orange">
+                <h3>Orange</h3>
+                <button onclick="toggleInfo('orange')">Know More</button>
+                <div id="orange" class="info">
+                    <p><strong>Diseases:</strong> Citrus canker, Huanglongbing.</p>
+                    <p><strong>Benefits:</strong> Rich in vitamin C, boosts immunity.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use balanced NPK fertilizers.</p>
+                </div>
+            </div>
+    
+            <!-- Papaya -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/papaya.jpg') }}" alt="Papaya">
+                <h3>Papaya</h3>
+                <button onclick="toggleInfo('papaya')">Know More</button>
+                <div id="papaya" class="info">
+                    <p><strong>Diseases:</strong> Powdery mildew, Ring spot virus.</p>
+                    <p><strong>Benefits:</strong> Rich in vitamins and digestive enzymes.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use organic compost and micronutrients.</p>
+                </div>
+            </div>
+    
+            <!-- Coconut -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/coconut.jpg') }}" alt="Coconut">
+                <h3>Coconut</h3>
+                <button onclick="toggleInfo('coconut')">Know More</button>
+                <div id="coconut" class="info">
+                    <p><strong>Diseases:</strong> Bud rot, Leaf spot.</p>
+                    <p><strong>Benefits:</strong> Rich in healthy fats and hydration.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use organic manure and potassium fertilizers.</p>
+                </div>
+            </div>
+    
+            <!-- Cotton -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/cotton.jpg') }}" alt="Cotton">
+                <h3>Cotton</h3>
+                <button onclick="toggleInfo('cotton')">Know More</button>
+                <div id="cotton" class="info">
+                    <p><strong>Diseases:</strong> Boll rot, Leaf curl virus.</p>
+                    <p><strong>Benefits:</strong> Used for textiles and oil production.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use nitrogen and phosphorus fertilizers.</p>
+                </div>
+            </div>
+    
+            <!-- Jute -->
+            <div class="crop-card">
+              <img src="{{ url_for('static', filename='images/crop/jute.jpg') }}" alt="Jute">
+                <h3>Jute</h3>
+                <button onclick="toggleInfo('jute')">Know More</button>
+                <div id="jute" class="info">
+                    <p><strong>Diseases:</strong> Stem rot, Leaf spot.</p>
+                    <p><strong>Benefits:</strong> Used for making ropes and textiles.</p>
+                    <p><strong>Fertilizer Prevention:</strong> Use organic compost and balanced fertilizers.</p>
+                </div>
+            </div>
+    
+            
+
+    <!-- Example for Coffee -->
+    <div class="crop-card">
+      <img src="{{ url_for('static', filename='images/crop/coffee.jpg') }}" alt="Coffee">
+      <h3>Coffee</h3>
+      <button onclick="toggleInfo('coffee')">Know More</button>
+      <div id="coffee" class="info">
+        <p><strong>Diseases:</strong> Coffee leaf rust, Coffee berry disease</p>
+        <p><strong>Benefits:</strong> Boosts energy, rich in antioxidants.</p>
+        <p><strong>Fertilizer Prevention:</strong> Use balanced NPK fertilizers.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleInfo(cropId) {
+      const infoDiv = document.getElementById(cropId);
+      if (infoDiv.style.display === "none" || infoDiv.style.display === "") {
+        infoDiv.style.display = "block";
+      } else {
+        infoDiv.style.display = "none";
+      }
+    }
+  </script>
+  <script type="text/javascript">
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+            pageLanguage: "en", // Default language of the page
+            includedLanguages: "te,ta,hi", // Supported languages
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE, // Layout style
+            autoDisplay: false, // Disable auto-display of translation
+        }, "google_translate_element");
+    }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+</body>
+</html>

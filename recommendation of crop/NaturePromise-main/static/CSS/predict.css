@@ -1,0 +1,12 @@
+div.container{
+        background-color: lavender;
+        width: 450px;
+        height: auto;
+        margin-top: 50px;
+        margin-bottom: 50px;
+        border-radius: 20px;
+        padding: 10px;
+}
+body{
+        background-image: url('/static/images/.jpg');
+}

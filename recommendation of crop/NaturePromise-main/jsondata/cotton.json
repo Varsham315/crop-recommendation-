@@ -1,0 +1,27 @@
+[
+  {
+    "state_name": "Gujarat",
+    "cotton_area": 2626.5,
+    "cotton_prod": 1820.28
+  },
+  {
+    "state_name": "Maharashtra",
+    "cotton_area": 4350.81,
+    "cotton_prod": 1096.83
+  },
+  {
+    "state_name": "Telangana",
+    "cotton_area": 1896.97,
+    "cotton_prod": 935.19
+  },
+  {
+    "state_name": "Orissa",
+    "cotton_area": 144.57,
+    "cotton_prod": 408.2
+  },
+  {
+    "state_name": "Andhra Pradesh",
+    "cotton_area": 646.04,
+    "cotton_prod": 375.82
+  }
+]

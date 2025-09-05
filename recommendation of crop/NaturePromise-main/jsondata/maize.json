@@ -1,0 +1,27 @@
+[
+  {
+    "state_name": "Karnataka",
+    "maize_area": 1307.03,
+    "maize_prod": 5610.67
+  },
+  {
+    "state_name": "Madhya Pradesh",
+    "maize_area": 1352.16,
+    "maize_prod": 4812.57
+  },
+  {
+    "state_name": "Maharashtra",
+    "maize_area": 1063.53,
+    "maize_prod": 3125.4
+  },
+  {
+    "state_name": "Bihar",
+    "maize_area": 677.45,
+    "maize_prod": 3120.75
+  },
+  {
+    "state_name": "Telangana",
+    "maize_area": 630.4499999999999,
+    "maize_prod": 2752.14
+  }
+]

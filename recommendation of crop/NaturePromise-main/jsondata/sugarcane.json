@@ -1,0 +1,27 @@
+[
+  {
+    "state_name": "Uttar Pradesh",
+    "sugarcane_area": 2304.21,
+    "sugarcane_prod": 18195.33
+  },
+  {
+    "state_name": "Maharashtra",
+    "sugarcane_area": 902.03,
+    "sugarcane_prod": 8253.92
+  },
+  {
+    "state_name": "Karnataka",
+    "sugarcane_area": 400.01,
+    "sugarcane_prod": 3746.0899999999997
+  },
+  {
+    "state_name": "Tamil Nadu",
+    "sugarcane_area": 171.85,
+    "sugarcane_prod": 1715.56
+  },
+  {
+    "state_name": "Bihar",
+    "sugarcane_area": 233.77,
+    "sugarcane_prod": 1382.46
+  }
+]

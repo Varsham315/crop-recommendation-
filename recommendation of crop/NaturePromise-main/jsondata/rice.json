@@ -1,0 +1,27 @@
+[
+  {
+    "state_name": "West Bengal",
+    "rice_area": 5307.6900000000005,
+    "rice_prod": 15658.94
+  },
+  {
+    "state_name": "Uttar Pradesh",
+    "rice_area": 5937.08,
+    "rice_prod": 15551.39
+  },
+  {
+    "state_name": "Punjab",
+    "rice_area": 3065.0,
+    "rice_prod": 13382.0
+  },
+  {
+    "state_name": "Andhra Pradesh",
+    "rice_area": 2218.1800000000003,
+    "rice_prod": 8461.34
+  },
+  {
+    "state_name": "Bihar",
+    "rice_area": 3306.98,
+    "rice_prod": 8093.16
+  }
+]

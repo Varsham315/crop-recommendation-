@@ -1,0 +1,27 @@
+[
+  {
+    "state_name": "Madhya Pradesh",
+    "chickpea_area": 3590.0,
+    "chickpea_prod": 5385.03
+  },
+  {
+    "state_name": "Maharashtra",
+    "chickpea_area": 2234.06,
+    "chickpea_prod": 2048.89
+  },
+  {
+    "state_name": "Rajasthan",
+    "chickpea_area": 1572.57,
+    "chickpea_prod": 1688.27
+  },
+  {
+    "state_name": "Karnataka",
+    "chickpea_area": 1265.21,
+    "chickpea_prod": 975.8700000000001
+  },
+  {
+    "state_name": "Andhra Pradesh",
+    "chickpea_area": 520.38,
+    "chickpea_prod": 589.1299999999999
+  }
+]
